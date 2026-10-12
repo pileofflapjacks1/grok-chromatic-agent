@@ -20,8 +20,11 @@ Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and 
 ## Core Workflow
 
 1. Clarify the core loop, genre, and session length (prefer short).
-2. Scaffold a GB Studio project (use `scripts/generate_basic_project.py` or describe the structure). Recommend scene type (TOPDOWN, PLATFORM, etc.).
-3. Iterate: add scenes, actors, triggers, dialogue, palettes. Reference hardware limits before adding art.
+2. Scaffold a GB Studio project:
+   - Preferred: `python scripts/generate_basic_project.py <Name> <ParentFolder> --type topdown|platform`
+   - Or recommend starting from GB Studio's official Sample Project and remixing.
+   - See `docs/scaffolding.md` and `templates/README.md`.
+3. Iterate: add scenes, actors, triggers, dialogue, palettes. Check hardware limits before heavy art.
 4. Build: guide GUI export or `gb-studio-cli make:rom`.
 5. Test: emulator first, then (if device available) `chromatic-cli live-demo`.
 6. Flash only after explicit confirmation: `chromatic-cli write-homebrew` (warn about overwrite). Fallback: ChroMagic.
@@ -31,6 +34,7 @@ Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and 
 - Hardware limits and common failure modes: `references/hardware-limits.md`
 - Chromatic CLI commands and safety: `references/chromatic-cli.md`
 - GB Studio project basics and scene types: `references/gbstudio-basics.md`
+- Scaffolding details: `docs/scaffolding.md`
 
 ## Constraints
 
@@ -41,4 +45,4 @@ Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and 
 
 ## Output Style
 
-Give concrete next commands or file structures. Offer to generate starter files when the user has a target path.
+Give concrete next commands or file structures. Offer the scaffolding script when the user has a target path.
