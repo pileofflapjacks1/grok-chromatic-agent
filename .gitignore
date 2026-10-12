@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# GB Studio builds
+build/
+*.gb
+*.gbc
+*.pocket
+
+# IDE
+.idea/
+.vscode/
+*.swp
