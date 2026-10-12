@@ -2,60 +2,68 @@
 
 Grok-friendly agent / skill for building **Game Boy Color** games that run on the **ModRetro Chromatic** (and any GB/GBC-compatible hardware or emulator).
 
-This is an open reverse-engineering of the software features provided by the official **ModRetro Chromatic plugin** for OpenAI Codex. It uses the same public toolchain:
+Open reverse-engineering of the software features in the official ModRetro Chromatic plugin for OpenAI Codex. Built on public tools:
 
-- **GB Studio** (open source) for project creation, scenes, actors, scripts, and ROM builds
-- **`@modretro/chromatic-cli`** for device interaction (live demo streaming + homebrew flashing)
-- Hardware-aware constraints for Game Boy / GBC limits
-
-## What you can do
-
-- Describe a game in natural language and get a GB Studio project skeleton + guidance
-- Validate assets against real hardware limits (tiles, sprites, palettes)
-- Build ROMs with the GB Studio CLI
-- Stream a live demo to a connected Chromatic
-- Flash homebrew to a writable Chromatic cartridge (when developer mode is activated)
-- Use alternative flashing methods (ChroMagic, etc.) if you don't have an official activation code
+- **GB Studio** — project creation, scenes, actors, scripts, ROM builds
+- **`@modretro/chromatic-cli`** — live demo streaming and homebrew flashing
+- Hardware-aware guidance for real Game Boy / GBC limits
 
 ## Quick Start
 
-1. Install [GB Studio](https://www.gbstudio.dev/) (latest stable).
-2. Install the Chromatic CLI:
+1. Install [GB Studio](https://www.gbstudio.dev/).
+2. (Optional) Install the Chromatic CLI:
    ```bash
    npm install --global @modretro/chromatic-cli
-   chromatic-cli install-drivers   # once, platform-specific
+   chromatic-cli install-drivers
    ```
-3. (Optional) Activate developer mode if you have a code from a DevDay Chromatic or ModRetro:
+3. Scaffold a project:
    ```bash
-   chromatic-cli activate YOUR_CODE
+   python scripts/generate_basic_project.py MyGame ~/Games --type topdown
    ```
-4. Use this repo with Grok (see `SKILL.md`) or follow the guides in `docs/`.
+4. Open the `.gbsproj` in GB Studio and start building.
+5. Use the skill (`SKILL.md`) with Grok for iteration, auditing, and device commands.
 
-## Key Commands (chromatic-cli)
+See `templates/seed-collector/README.md` for a concrete first-game loop.
 
-| Command | Purpose |
-|---------|---------|
-| `chromatic-cli list-devices` | List connected Chromatics |
-| `chromatic-cli detect-cart` | Inspect the cartridge |
-| `chromatic-cli live-demo path/to/game.gbc` | Stream ROM to Chromatic for testing |
-| `chromatic-cli write-homebrew path/to/game.gbc` | Flash ROM to cartridge |
+## What You Get
+
+- Proper Grok skill (`SKILL.md`) with frontmatter, evals, and references
+- Project scaffolder with `--type topdown|platform`
+- Hardware limits reference + audit checklist script
+- Chromatic CLI command reference and safety notes
+- Example prompts and starter guidance
 
 ## Project Structure
 
-- `SKILL.md` — Drop this into your Grok skills folder for native agent behavior
-- `docs/` — Detailed setup, workflows, and hardware notes
-- `examples/` — Sample prompts and project ideas
-- `scripts/` — Helper scripts (basic project scaffolding)
+```
+SKILL.md                  # Grok skill (drop into skills or reference)
+CHANGELOG.md
+evals/                    # Skill evaluation cases
+references/               # Hardware limits, CLI, GB Studio basics
+docs/                     # Setup, workflow, scaffolding
+templates/                # Starter ideas (seed-collector, etc.)
+scripts/                  # generate_basic_project.py, audit_checklist.py
+examples/prompts.md
+```
 
-## Related Projects
+## Key Commands
 
-- Official Codex plugin: ModRetro Chromatic (requires Codex desktop)
-- Community MCP server for Claude: [eoinjordan/gb-studio-agent](https://github.com/eoinjordan/gb-studio-agent)
-- Custom firmware / alternative flashing: [ChroMagic](https://chromagic.org/)
+| Tool | Command | Purpose |
+|------|---------|---------|
+| Scaffolder | `python scripts/generate_basic_project.py Name ~/Games --type topdown` | Create project |
+| Audit | `python scripts/audit_checklist.py` | Print hardware checklist |
+| Chromatic | `chromatic-cli live-demo game.gbc` | Stream to device |
+| Chromatic | `chromatic-cli write-homebrew game.gbc` | Flash (warn first!) |
+
+## Related
+
+- Official Codex plugin: ModRetro Chromatic
+- Community Claude MCP: [eoinjordan/gb-studio-agent](https://github.com/eoinjordan/gb-studio-agent)
+- Alternative flashing: [ChroMagic](https://chromagic.org/)
 
 ## Disclaimer
 
-This is an independent community project. It is not affiliated with ModRetro or OpenAI. Use developer mode and cartridge flashing at your own risk. Only flash original homebrew you created.
+Independent community project. Not affiliated with ModRetro or OpenAI. Flash only your own homebrew. Use developer mode and cartridge writing at your own risk.
 
 ## License
 
