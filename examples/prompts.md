@@ -2,7 +2,7 @@
 
 Copy these into Grok (with the Chromatic skill loaded) or adapt them.
 
-## New Game
+## New Exploration Game
 
 ```
 Create a new GB Studio project called MoonGarden.
@@ -11,13 +11,34 @@ and plants them to unlock a gate. Include a starting outdoor scene and a simple
 player character. Generate the project structure and list the next steps.
 ```
 
-## Remix / Expand
+## Platformer / Grok Bot Starter
 
 ```
-I have a GB Studio project at ./MyGame.
-Add a village scene with three houses, a central fountain, and one NPC
-I can talk to. Connect it to the starting area with a trigger.
-Also give the village a cool blue moonlit palette.
+Scaffold a platformer called GrokBot for Chromatic.
+Player can run and jump, has fun customizable eyes, collects power-ups,
+and avoids or defeats simple enemies. Start with one short level and a goal flag.
+Use --type platform. Give me the exact commands and first-playable checklist.
+```
+
+## Add a Power-up
+
+```
+In my platformer, add a power-up that temporarily increases jump height.
+Show me the GB Studio variable + script approach and where to place the actor.
+```
+
+## Enemy
+
+```
+Add a simple patrolling enemy to my platform level that hurts the player on touch.
+Keep it hardware-friendly and suggest a basic sprite size.
+```
+
+## Level Progression
+
+```
+I have a working Level 1 platformer. Help me plan Levels 2–3 and a path toward
+9 short levels + a boss while staying within GBC limits.
 ```
 
 ## Asset Audit
@@ -31,14 +52,14 @@ for Game Boy Color hardware limits. List any problems and suggest fixes.
 
 ```
 I just built game.gbc. Give me the exact chromatic-cli commands
-to stream it to my connected Chromatic for a 2-minute test,
-then flash it to the cartridge if the test looks good.
+to stream it to my connected Chromatic for a short test,
+then the safe steps if I later want to flash it.
 ```
 
-## Platformer Starter
+## Remix / Expand
 
 ```
-Scaffold a simple platformer for Chromatic: player can run and jump,
-collect coins, avoid one type of enemy, reach a goal flag.
-Keep it to 2-3 short levels. Use GB Studio platformer scene type.
+I have a GB Studio project at ./MyGame.
+Add a second scene with a different palette, connect it with a trigger,
+and add one NPC or enemy. Keep everything Chromatic-friendly.
 ```
