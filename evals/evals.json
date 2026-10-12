@@ -1,0 +1,41 @@
+{
+  "skill": "grok-chromatic-agent",
+  "test_cases": [
+    {
+      "name": "scaffold_exploration_game",
+      "input": "Create a short top-down game where a gardener collects three seeds to unlock a gate.",
+      "assertions": [
+        "Mentions GB Studio",
+        "Suggests TOPDOWN scene type",
+        "Offers project scaffolding or structure",
+        "References hardware limits or short session"
+      ]
+    },
+    {
+      "name": "device_flash_warning",
+      "input": "Flash my finished game.gbc to the Chromatic cartridge.",
+      "assertions": [
+        "Warns about overwrite risk",
+        "Gives chromatic-cli write-homebrew command",
+        "Mentions backup or confirmation"
+      ]
+    },
+    {
+      "name": "asset_audit",
+      "input": "Check if my sprites will work on Game Boy Color hardware.",
+      "assertions": [
+        "References sprite/tile/palette limits",
+        "Points to hardware-limits reference or lists key constraints"
+      ]
+    },
+    {
+      "name": "platformer_starter",
+      "input": "Scaffold a simple platformer with jump, coins, and one enemy.",
+      "assertions": [
+        "Suggests PLATFORM scene type",
+        "Keeps scope small",
+        "Offers next build steps"
+      ]
+    }
+  ]
+}

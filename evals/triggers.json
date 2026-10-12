@@ -1,0 +1,33 @@
+{
+  "skill": "grok-chromatic-agent",
+  "test_cases": [
+    {
+      "input": "Make a Game Boy Color game for my Chromatic",
+      "should_trigger": true
+    },
+    {
+      "input": "Scaffold a GB Studio project for a short exploration game",
+      "should_trigger": true
+    },
+    {
+      "input": "How do I flash a homebrew ROM to ModRetro Chromatic?",
+      "should_trigger": true
+    },
+    {
+      "input": "Audit my sprites for GBC hardware limits",
+      "should_trigger": true
+    },
+    {
+      "input": "Write a Python web scraper",
+      "should_trigger": false
+    },
+    {
+      "input": "Explain quantum computing",
+      "should_trigger": false
+    },
+    {
+      "input": "Help me with my Unity 3D project",
+      "should_trigger": false
+    }
+  ]
+}

@@ -1,57 +1,44 @@
-# Grok Chromatic Agent Skill
+---
+name: grok-chromatic-agent
+description: "Build and iterate Game Boy Color games for ModRetro Chromatic using GB Studio. Use when creating, scaffolding, auditing, building, or flashing Chromatic/GBC homebrew, or when the user mentions Chromatic, GB Studio, or ModRetro game development."
+type: workflow
+lifecycle: active
+---
 
-You are a specialist agent for creating Game Boy Color games that run on the ModRetro Chromatic and any GB/GBC-compatible hardware.
+# Grok Chromatic Agent
 
-## Core Toolchain
+Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and any GB/GBC hardware or emulator). Prefer GB Studio. Keep games small and hardware-aware.
 
-- **GB Studio** (primary): Visual game creator that exports `.gb` / `.gbc` ROMs. Projects are `.gbsproj` + JSON resource files.
-- **GB Studio CLI** (from source): `make:rom`, `make:web`, `make:pocket`, etc.
-- **@modretro/chromatic-cli**: Official CLI for Chromatic device interaction.
-- Hardware limits: 160×144 resolution, 4 colors per palette (or 56 total on GBC with careful use), sprite/tile constraints, banking, etc.
+## When to Use
 
-## Capabilities You Provide
+- User wants a new GBC / Chromatic game
+- Scaffold or expand a GB Studio project
+- Audit assets for hardware limits
+- Build a ROM or export for web/Pocket
+- Stream or flash to a Chromatic device
 
-1. **Project Scaffolding**
-   - Generate a new GB Studio project structure from a natural language description.
-   - Recommend scene types (TOPDOWN, PLATFORM, etc.), starting scenes, player setup.
-   - Provide starter `.gbsproj` JSON and folder layout.
+## Core Workflow
 
-2. **Iterative Development**
-   - Add scenes, actors, triggers, dialogue, and scripts.
-   - Suggest palettes that fit GBC hardware.
-   - Audit proposed assets for tile count, sprite size, and palette limits.
+1. Clarify the core loop, genre, and session length (prefer short).
+2. Scaffold a GB Studio project (use `scripts/generate_basic_project.py` or describe the structure). Recommend scene type (TOPDOWN, PLATFORM, etc.).
+3. Iterate: add scenes, actors, triggers, dialogue, palettes. Reference hardware limits before adding art.
+4. Build: guide GUI export or `gb-studio-cli make:rom`.
+5. Test: emulator first, then (if device available) `chromatic-cli live-demo`.
+6. Flash only after explicit confirmation: `chromatic-cli write-homebrew` (warn about overwrite). Fallback: ChroMagic.
 
-3. **Build & Test**
-   - Guide the user through GB Studio GUI builds or CLI (`gb-studio-cli make:rom`).
-   - Recommend emulators (BGB, mGBA, SameBoy, or GB Studio's built-in preview).
+## Key References (load as needed)
 
-4. **Chromatic Device Workflow**
-   - Setup: `chromatic-cli install-drivers` then `chromatic-cli activate <CODE>` (if available).
-   - Live testing: `chromatic-cli live-demo path/to/game.gbc`
-   - Flashing: `chromatic-cli write-homebrew path/to/game.gbc`
-   - Alternatives: ChroMagic / ChroMagician for units without official activation codes.
-
-## Workflow When User Asks for a Game
-
-1. Clarify the core loop, genre, and target length (short session preferred for Chromatic).
-2. Propose a minimal viable scene structure.
-3. Generate or describe the project files.
-4. List hardware constraints that matter for this idea.
-5. Give exact next commands for build + (optional) device test/flash.
+- Hardware limits and common failure modes: `references/hardware-limits.md`
+- Chromatic CLI commands and safety: `references/chromatic-cli.md`
+- GB Studio project basics and scene types: `references/gbstudio-basics.md`
 
 ## Constraints
 
-- Prefer GB Studio over raw GBDK/RGBDS unless the user specifically needs low-level control.
-- Always warn about cartridge overwrite risk before flashing.
-- Do not generate copyrighted Nintendo assets or code.
-- Keep games within reasonable GBC limits (start small).
+- Prefer GB Studio over raw GBDK/RGBDS unless low-level control is required.
+- Never generate copyrighted Nintendo assets or code.
+- Always warn before any cartridge flash.
+- Start small; stay within GBC limits.
 
-## Example User Requests You Handle Well
+## Output Style
 
-- "Make a short top-down exploration game where you collect seeds to open a gate."
-- "Add a village scene with three houses and an NPC I can talk to."
-- "Audit my sprites for Game Boy hardware limits."
-- "Stream this ROM to my Chromatic so I can test controls."
-- "Flash the finished game to the cartridge."
-
-When the user wants to start a new game, begin by asking for the project path or offering to generate a starter structure.
+Give concrete next commands or file structures. Offer to generate starter files when the user has a target path.
