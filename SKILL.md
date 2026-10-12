@@ -21,13 +21,16 @@ Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and 
 
 1. Clarify the core loop, genre, and session length (prefer short).
 2. Scaffold:
-   - `python scripts/generate_basic_project.py <Name> <Parent> --type topdown|platform`
+   - Platformer: `python scripts/generate_basic_project.py <Name> <Parent> --type platform` then follow `templates/platformer/README.md`
+   - Exploration: `--type topdown` + `templates/seed-collector/README.md`
    - Or start from GB Studio Sample Project.
-   - For a concrete first game, follow `templates/seed-collector/README.md`.
 3. Iterate on scenes, actors, triggers, and scripts. Run `python scripts/audit_checklist.py` or check `references/hardware-limits.md` before heavy art.
 4. Build (GUI or `gb-studio-cli make:rom`).
-5. Test in emulator, then optionally `chromatic-cli live-demo`.
-6. Flash only after explicit confirmation (`chromatic-cli write-homebrew`). Always warn about overwrite. Fallback: ChroMagic.
+5. Test in emulator, then optionally use helpers:
+   - `python scripts/chromatic_helpers.py live-demo path/to/game.gbc`
+6. Flash only after explicit confirmation. Use:
+   - `python scripts/chromatic_helpers.py flash path/to/game.gbc`
+   Always warn about overwrite. Fallback: ChroMagic.
 
 ## Key References (load as needed)
 
@@ -35,7 +38,10 @@ Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and 
 - Chromatic CLI: `references/chromatic-cli.md`
 - GB Studio basics: `references/gbstudio-basics.md`
 - Scaffolding: `docs/scaffolding.md`
+- Platformer starter: `templates/platformer/README.md`
 - Seed-collector starter: `templates/seed-collector/README.md`
+- Troubleshooting: `docs/troubleshooting.md`
+- Skill install: `docs/install-skill.md`
 
 ## Constraints
 
@@ -46,4 +52,4 @@ Create and iterate Game Boy Color games that run on the ModRetro Chromatic (and 
 
 ## Output Style
 
-Give concrete commands and next steps. Prefer the scaffolder or seed-collector template when starting fresh.
+Give concrete commands and next steps. Prefer the scaffolder + matching template when starting fresh.
