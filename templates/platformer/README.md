@@ -1,6 +1,6 @@
 # Platformer Starter
 
-A minimal Kirby/Mario-style platformer loop for Chromatic / GB Studio.
+A minimal side-scrolling platformer loop for Chromatic / GB Studio.
 
 **Core loop:** Run, jump, collect power-ups/coins, avoid or defeat simple enemies, reach the goal.
 

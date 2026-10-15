@@ -2,7 +2,7 @@
 
 Grok-friendly agent / skill for building **Game Boy Color** games that run on the **ModRetro Chromatic** (and any GB/GBC-compatible hardware or emulator).
 
-Open reverse-engineering of the software features in the official ModRetro Chromatic plugin for OpenAI Codex. Built on public tools:
+An independent skill for a GB Studio → Chromatic homebrew workflow. It is written from scratch using only public tools and public documentation, and contains no code, prompts or assets from any other plugin or product. Built on:
 
 - **GB Studio** — project creation, scenes, actors, scripts, ROM builds
 - **`@modretro/chromatic-cli`** — live demo streaming and homebrew flashing
@@ -71,7 +71,6 @@ examples/prompts.md
 
 ## Related
 
-- Official Codex plugin: ModRetro Chromatic
 - Community Claude MCP: [eoinjordan/gb-studio-agent](https://github.com/eoinjordan/gb-studio-agent)
 - Alternative flashing: [ChroMagic](https://chromagic.org/)
 
@@ -81,7 +80,7 @@ Suggested GitHub topics: `gbstudio` `gameboy` `gameboy-color` `chromatic` `modre
 
 ## Disclaimer
 
-Independent community project. Not affiliated with ModRetro or OpenAI. Flash only your own homebrew. Use developer mode and cartridge writing at your own risk.
+Independent community project. Not affiliated with, endorsed by, or sponsored by ModRetro, OpenAI or Nintendo. ModRetro and Chromatic are trademarks of ModRetro; Game Boy and Game Boy Color are trademarks of Nintendo, used here only to describe hardware compatibility. Flash only your own homebrew. Use developer mode and cartridge writing at your own risk.
 
 ## License
 
